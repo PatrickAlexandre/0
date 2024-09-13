@@ -2,90 +2,436 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Application Web Mobile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeMaster X10 | Listes, Calculs, Références</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a5568;
+            --bg-color: #f0f0f0;
+            --border-radius: 12px;
+            --padding: 20px;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --degrade: linear-gradient(135deg, #ff9a9e, #a1c4fd, #d4fc79);
+            --focus-color: #3182ce;
+            --header-footer-bg-color: aqua;
+        }
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: var(--padding);
+            background-color: var(--bg-color);
+        }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/kMVqHHKf3t1Dd2c2i0p1XR1Cv2aU/ASX+Ry78+pcZJ+h5vlyIWcifm5+Ffo5TY5Uc/hsJmsZ3J5/Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        header, footer, nav {
+            text-align: center;
+            background-color: var(--header-footer-bg-color);
+            color: white;
+            padding: 10px;
+        }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        main {
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--padding);
+            margin: 20px auto;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--primary-color);
+        }
+
+        .objectif {
+            padding: var(--padding);
+            border-radius: var(--border-radius);
+            background: var(--degrade);
+            margin-bottom: var(--padding);
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card p {
+            font-size: 1.2em;
+        }
+
+        @media (min-width: 769px) {
+            .card {
+                width: calc(25% - 20px);
+            }
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th, td {
+            text-align: left;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #2d3748;
+        }
+
+        button:focus {
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1em;
+            margin-bottom: 12px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--focus-color);
+            border-color: var(--focus-color);
+        }
+
+        label {
+            font-size: 1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input:invalid, select:invalid, textarea:invalid {
+            border-color: #e53e3e;
+        }
+
+        input:valid, select:valid, textarea:valid {
+            border-color: #48bb78;
+        }
+
+        @media (max-width: 1080px) {
+            header {
+                font-size: 0.9em;
+            }
+
+            nav {
+                font-size: 0.9em;
+            }
+        }
+
+    </style>
+
 </head>
 
-<body class="bg-gray-100">
+<body>
 
-  <!-- Navigation Bar -->
-  <nav class="bg-blue-500 p-4 fixed w-full top-0 z-10">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="text-white text-xl">
-        <i class="fas fa-mobile-alt"></i> App Mobile
-      </div>
-      <div>
-        <button class="text-white text-2xl"><i class="fas fa-bars"></i></button>
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <a href="#developpement">🌱 Développement Personnel</a> | 
+        <a href="#sante">💊 Santé</a> | 
+        <a href="#argent">👛 Argent</a>
+    </nav>
 
-  <!-- Header Section -->
-  <header class="mt-16 bg-blue-600 text-white text-center py-12">
-    <h1 class="text-4xl font-bold">Bienvenue sur Notre Application Mobile</h1>
-    <p class="mt-4 text-lg">Une expérience fluide et rapide à portée de main</p>
-  </header>
+    <header>
+        <h1>Listes, Calculs, Références, Conseil</h1>
+        <h2>Professions et Objectifs</h2>
+    </header>
 
-  <!-- Features Section with rounded containers -->
-  <section class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-semibold text-center mb-8">Fonctionnalités Clés</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-      <div class="bg-gray-300 p-6 rounded-full shadow-lg">
-        <i class="fas fa-lock text-4xl text-blue-500 mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Sécurité Maximale</h3>
-        <p class="text-gray-700">Vos données sont protégées avec les dernières technologies de cryptage.</p>
-      </div>
-      <div class="bg-gray-300 p-6 rounded-full shadow-lg">
-        <i class="fas fa-bolt text-4xl text-blue-500 mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Rapidité</h3>
-        <p class="text-gray-700">Une navigation rapide pour une meilleure expérience utilisateur.</p>
-      </div>
-      <div class="bg-gray-300 p-6 rounded-full shadow-lg">
-        <i class="fas fa-sync-alt text-4xl text-blue-500 mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Synchronisation</h3>
-        <p class="text-gray-700">Synchronisez vos données sur tous vos appareils sans effort.</p>
-      </div>
-      <div class="bg-gray-300 p-6 rounded-full shadow-lg">
-        <i class="fas fa-cog text-4xl text-blue-500 mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Personnalisation</h3>
-        <p class="text-gray-700">Personnalisez votre application selon vos besoins et préférences.</p>
-      </div>
-    </div>
-  </section>
+    <main id="developpement">
+        <h2>Développement Personnel</h2>
+        <div class="objectif">
+            <h3>Pourquoi le développement personnel ?</h3>
+            <p>Améliorer la productivité et le bien-être personnel.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Développement Personnel :</h5>
+                    <ol>
+                        <li>*Les 4 accords toltèques* - Don Miguel Ruiz</li>
+                        <li>*Pouvoir illimité* - Tony Robbins</li>
+                        <li>*The Miracle Morning* - Hal Elrod</li>
+                        <li>*Atomic Habits* - James Clear</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Développement Personnel :</h5>
+                    <ol>
+                        <li>Tony Robbins</li>
+                        <li>Tim Ferriss</li>
+                        <li>Mel Robbins</li>
+                        <li>Brendon Burchard</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Notion, Evernote, Headspace, Trello</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="devForm">
+                        <label for="heuresLecture">Heures de lecture par semaine :</label>
+                        <input type="number" id="heuresLecture" name="heuresLecture" required><br>
+                        <label for="meditationTemps">Minutes de méditation par jour :</label>
+                        <input type="number" id="meditationTemps" name="meditationTemps" required><br>
+                        <button type="button" onclick="calculerDev()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <!-- Call to Action -->
-  <section class="bg-blue-600 text-white text-center py-12">
-    <h2 class="text-3xl font-semibold mb-4">Téléchargez l'application maintenant!</h2>
-    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg text-lg font-bold">
-      <i class="fas fa-download"></i> Télécharger
-    </button>
-  </section>
+    <main id="sante">
+        <h2>Santé</h2>
+        <div class="objectif">
+            <h3>Pourquoi la santé est essentielle ?</h3>
+            <p>Maintenir une bonne santé physique et mentale.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Santé :</h5>
+                    <ol>
+                        <li>*Le Charme discret de l'intestin* - Giulia Enders</li>
+                        <li>*Pourquoi nous dormons* - Matthew Walker</li>
+                        <li>*L'alimentation ou la troisième médecine* - Jean Seignalet</li>
+                        <li>*Le Pouvoir du moment présent* - Eckhart Tolle</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Santé :</h5>
+                    <ol>
+                        <li>Dr. Mark Hyman</li>
+                        <li>Kelly LeVeque (nutrition)</li>
+                        <li>Dr. Rhonda Patrick</li>
+                        <li>Wim Hof (respiration et froid)</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : Notion, Evernote, Headspace, Trello</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="santeForm">
+                        <label for="calories">Calories consommées par jour :</label>
+                        <input type="number" id="calories" name="calories" required><br>
+                        <label for="exerciceTemps">Minutes d'exercice par semaine :</label>
+                        <input type="number" id="exerciceTemps" name="exerciceTemps" required><br>
+                        <button type="button" onclick="calculerSante()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white text-center py-4">
-    <p>&copy; 2024 App Mobile. Tous droits réservés.</p>
-    <div class="mt-2">
-      <a href="#" class="text-blue-400 mx-2"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="text-blue-400 mx-2"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="text-blue-400 mx-2"><i class="fab fa-instagram"></i></a>
-    </div>
-  </footer>
+    <main id="argent">
+        <h2>Argent</h2>
+        <div class="objectif">
+            <h3>Pourquoi la gestion financière est cruciale ?</h3>
+            <p>Assurer la sécurité financière.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Finances :</h5>
+                    <ol>
+                        <li>*Père riche, père pauvre* - Robert Kiyosaki</li>
+                        <li>*L'Investisseur intelligent* - Benjamin Graham</li>
+                        <li>*Ton plan de match pour les finances* - Dave Ramsey</li>
+                        <li>*The Millionaire Next Door* - Thomas J. Stanley</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Finances :</h5>
+                    <ol>
+                        <li>Dave Ramsey</li>
+                        <li>Ramsey Solutions</li>
+                        <li>Warren Buffet (investissement)</li>
+                        <li>Robert Kiyosaki</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Mint, YNAB, Revolut, Robinhood</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="argentForm">
+                        <label for="revenus">Revenus mensuels :</label>
+                        <input type="number" id="revenus" name="revenus" required><br>
+                        <label for="depenses">Dépenses mensuelles :</label>
+                        <input type="number" id="depenses" name="depenses" required><br>
+                        <button type="button" onclick="calculerArgent()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <caption>Résumé financier</caption>
+            <thead>
+                <tr>
+                    <th>Objectif</th>
+                    <th>Action</th>
+                    <th>Fréquence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Épargne</td>
+                    <td>Mettre 20% des revenus de côté</td>
+                    <td>Mensuellement</td>
+                </tr>
+                <tr>
+                    <td>Investissement</td>
+                    <td>Investir dans des actions</td>
+                    <td>Trimestriellement</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <main id="productivite">
+        <h2>Améliorer la Productivité et la Gestion du Temps</h2>
+        <div class="objectif">
+            <h3>Pourquoi la gestion du temps est-elle importante ?</h3>
+            <p>Optimiser son emploi du temps permet d'accomplir plus en moins de temps, tout en évitant le stress.</p>
+            <h4>Les techniques recommandées :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres sur la Gestion du Temps :</h5>
+                    <ol>
+                        <li>*Deep Work* - Cal Newport</li>
+                        <li>*The 4-Hour Workweek* - Tim Ferriss</li>
+                        <li>*Essentialism* - Greg McKeown</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références sur la Productivité :</h5>
+                    <ol>
+                        <li>David Allen (GTD)</li>
+                        <li>Cal Newport (Deep Work)</li>
+                        <li>Stephen Covey (7 Habits of Highly Effective People)</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Todoist, RescueTime, Habitica</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="productiviteForm">
+                        <label for="tempsTravail">Heures de travail par jour :</label>
+                        <input type="number" id="tempsTravail" name="tempsTravail" required><br>
+                        <label for="tachesFinies">Tâches accomplies aujourd'hui :</label>
+                        <input type="number" id="tachesFinies" name="tachesFinies" required><br>
+                        <button type="button" onclick="calculerProductivite()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LifeMaster X10</p>
+    </footer>
+
+    <script>
+        function calculerDev() {
+            var heuresLecture = document.getElementById("heuresLecture").value;
+            var meditationTemps = document.getElementById("meditationTemps").value;
+            alert("Total heures de lecture par semaine : " + heuresLecture + "\nMinutes de méditation par jour : " + meditationTemps);
+        }
+
+        function calculerSante() {
+            var calories = document.getElementById("calories").value;
+            var exerciceTemps = document.getElementById("exerciceTemps").value;
+            alert("Calories consommées par jour : " + calories + "\nMinutes d'exercice par semaine : " + exerciceTemps);
+        }
+
+        function calculerArgent() {
+            var revenus = document.getElementById("revenus").value;
+            var depenses = document.getElementById("depenses").value;
+            alert("Revenus mensuels : " + revenus + "\nDépenses mensuelles : " + depenses);
+        }
+    </script>
+
+    <script>
+        function calculerProductivite() {
+            var tempsTravail = document.getElementById("tempsTravail").value;
+            var tachesFinies = document.getElementById("tachesFinies").value;
+            alert("Heures de travail par jour : " + tempsTravail + "\nTâches accomplies aujourd'hui : " + tachesFinies);
+        }
+    </script>
 
 </body>
 
