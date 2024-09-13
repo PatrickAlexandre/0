@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeMaster X10 | Listes, Calculs, Références</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <a href="#developpement">🌱 Développement Personnel</a> | 
+        <a href="#sante">💊 Santé</a> | 
+        <a href="#argent">👛 Argent</a>
+    </nav>
+
+    <header>
+        <h1>Listes, Calculs, Références, Conseil</h1>
+        <h2>Professions et Objectifs</h2>
+    </header>
+
+    <main id="developpement">
+        <h2>Développement Personnel</h2>
+        <div class="objectif">
+            <h3>Pourquoi le développement personnel ?</h3>
+            <p>Améliorer la productivité et le bien-être personnel.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Développement Personnel :</h5>
+                    <ol>
+                        <li>*Les 4 accords toltèques* - Don Miguel Ruiz</li>
+                        <li>*Pouvoir illimité* - Tony Robbins</li>
+                        <li>*The Miracle Morning* - Hal Elrod</li>
+                        <li>*Atomic Habits* - James Clear</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Développement Personnel :</h5>
+                    <ol>
+                        <li>Tony Robbins</li>
+                        <li>Tim Ferriss</li>
+                        <li>Mel Robbins</li>
+                        <li>Brendon Burchard</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Notion, Evernote, Headspace, Trello</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="devForm">
+                        <label for="heuresLecture">Heures de lecture par semaine :</label>
+                        <input type="number" id="heuresLecture" name="heuresLecture" required><br>
+                        <label for="meditationTemps">Minutes de méditation par jour :</label>
+                        <input type="number" id="meditationTemps" name="meditationTemps" required><br>
+                        <button type="button" onclick="calculerDev()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="sante">
+        <h2>Santé</h2>
+        <div class="objectif">
+            <h3>Pourquoi la santé est essentielle ?</h3>
+            <p>Maintenir une bonne santé physique et mentale.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Santé :</h5>
+                    <ol>
+                        <li>*Le Charme discret de l'intestin* - Giulia Enders</li>
+                        <li>*Pourquoi nous dormons* - Matthew Walker</li>
+                        <li>*L'alimentation ou la troisième médecine* - Jean Seignalet</li>
+                        <li>*Le Pouvoir du moment présent* - Eckhart Tolle</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Santé :</h5>
+                    <ol>
+                        <li>Dr. Mark Hyman</li>
+                        <li>Kelly LeVeque (nutrition)</li>
+                        <li>Dr. Rhonda Patrick</li>
+                        <li>Wim Hof (respiration et froid)</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : Notion, Evernote, Headspace, Trello</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="santeForm">
+                        <label for="calories">Calories consommées par jour :</label>
+                        <input type="number" id="calories" name="calories" required><br>
+                        <label for="exerciceTemps">Minutes d'exercice par semaine :</label>
+                        <input type="number" id="exerciceTemps" name="exerciceTemps" required><br>
+                        <button type="button" onclick="calculerSante()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="argent">
+        <h2>Argent</h2>
+        <div class="objectif">
+            <h3>Pourquoi la gestion financière est cruciale ?</h3>
+            <p>Assurer la sécurité financière.</p>
+            <h4>Les actions à entreprendre :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres en Finances :</h5>
+                    <ol>
+                        <li>*Père riche, père pauvre* - Robert Kiyosaki</li>
+                        <li>*L'Investisseur intelligent* - Benjamin Graham</li>
+                        <li>*Ton plan de match pour les finances* - Dave Ramsey</li>
+                        <li>*The Millionaire Next Door* - Thomas J. Stanley</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références en Finances :</h5>
+                    <ol>
+                        <li>Dave Ramsey</li>
+                        <li>Ramsey Solutions</li>
+                        <li>Warren Buffet (investissement)</li>
+                        <li>Robert Kiyosaki</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Mint, YNAB, Revolut, Robinhood</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="argentForm">
+                        <label for="revenus">Revenus mensuels :</label>
+                        <input type="number" id="revenus" name="revenus" required><br>
+                        <label for="depenses">Dépenses mensuelles :</label>
+                        <input type="number" id="depenses" name="depenses" required><br>
+                        <button type="button" onclick="calculerArgent()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <caption>Résumé financier</caption>
+        </table>
+    </main>
+
+    <main id="productivite">
+        <h2>Améliorer la Productivité et la Gestion du Temps</h2>
+        <div class="objectif">
+            <h3>Pourquoi la gestion du temps est-elle importante ?</h3>
+            <p>Optimiser son emploi du temps permet d'accomplir plus en moins de temps, tout en évitant le stress.</p>
+            <h4>Les techniques recommandées :</h4>
+            <div class="cards">
+                <div class="card">
+                    <h5>📖 Meilleurs livres sur la Gestion du Temps :</h5>
+                    <ol>
+                        <li>*Deep Work* - Cal Newport</li>
+                        <li>*The 4-Hour Workweek* - Tim Ferriss</li>
+                        <li>*Essentialism* - Greg McKeown</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📝 Références sur la Productivité :</h5>
+                    <ol>
+                        <li>David Allen (GTD)</li>
+                        <li>Cal Newport (Deep Work)</li>
+                        <li>Stephen Covey (7 Habits of Highly Effective People)</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h5>📱 Apps : Dynalist, Asana, Todoist, RescueTime</h5>
+                </div>
+                <div class="card">
+                    <h5>📱 Sites : MyFitnessPal, Strava, Calm, Fitbit</h5>
+                </div>
+                <div class="card">
+                    <h5>📝 Insérez vos données</h5>
+                    <form id="productiviteForm">
+                        <label for="tempsTravail">Heures de travail par jour :</label>
+                        <input type="number" id="tempsTravail" name="tempsTravail" required><br>
+                        <label for="tachesFinies">Tâches accomplies aujourd'hui :</label>
+                        <input type="number" id="tachesFinies" name="tachesFinies" required><br>
+                        <button type="button" onclick="calculerProductivite()">Calculer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LifeMaster X10</p>
+    </footer>
+
+    <script>
+        function calculerDev() {
+            var heuresLecture = document.getElementById("heuresLecture").value;
+            var meditationTemps = document.getElementById("meditationTemps").value;
+            alert("Total heures de lecture par semaine : " + heuresLecture + "\nMinutes de méditation par jour : " + meditationTemps);
+        }
+
+        function calculerSante() {
+            var calories = document.getElementById("calories").value;
+            var exerciceTemps = document.getElementById("exerciceTemps").value;
+            alert("Calories consommées par jour : " + calories + "\nMinutes d'exercice par semaine : " + exerciceTemps);
+        }
+
+        function calculerArgent() {
+            var revenus = document.getElementById("revenus").value;
+            var depenses = document.getElementById("depenses").value;
+            alert("Revenus mensuels : " + revenus + "\nDépenses mensuelles : " + depenses);
+        }
+    </script>
+
+    <script>
+        function calculerProductivite() {
+            var tempsTravail = document.getElementById("tempsTravail").value;
+            var tachesFinies = document.getElementById("tachesFinies").value;
+            alert("Heures de travail par jour : " + tempsTravail + "\nTâches accomplies aujourd'hui : " + tachesFinies);
+        }
+    </script>
+
+</body>
+
+</html>
